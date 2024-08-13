@@ -1,0 +1,23 @@
+.table th {
+    text-align: center;
+  }
+  
+  .table td {
+    text-align: center;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .btn svg {
+    margin-right: 5px;
+  }
+  
+  .table td,
+  .table th {
+    padding: 10px;
+  }
+  

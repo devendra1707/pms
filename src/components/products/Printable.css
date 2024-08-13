@@ -1,0 +1,45 @@
+.printable {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .purchase-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .detail-row p {
+    width: 48%; /* Adjust width as needed */
+  }
+  
+  /* Print-specific styles */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .printable,
+    .printable * {
+      visibility: visible;
+    }
+    .printable {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      box-shadow: none; /* Remove any box shadow for print */
+    }
+    /* Adjust page margins if needed */
+    @page {
+      margin: 20mm; /* Adjust as necessary */
+    }
+  }
+  
