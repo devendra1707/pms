@@ -20,7 +20,7 @@ export const addProductQut = (prodId, quantity) => {
 
 // update Products details /update/{prodId}
 
-export const updateProduct = (id, product) => {
+export const updateProductDetails = (id, product) => {
   return privateAxios.put(`product/update/${id}`, product).then((response) => {
     return response.data;
   });

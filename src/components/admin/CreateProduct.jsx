@@ -90,8 +90,8 @@ const CreateProduct = () => {
 
   const crumbs = [
     { label: "Home", path: "/" },
-    { label: "Domains", path: "/domains" },
-    { label: "Add Domain" },
+    { label: "Products", path: "/view-product" },
+    { label: "Add Products" },
   ];
 
   return (

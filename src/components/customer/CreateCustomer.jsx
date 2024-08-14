@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Breadcrumb from "../navbar/Breadcrumb";
@@ -8,6 +8,12 @@ import { createCustomer } from "../../services/admin/Customer";
 
 const CreateCustomer = () => {
   const navigate = useNavigate();
+
+  const pageTitle = "Create Customer";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   const validationSchema = Yup.object().shape({
     cusName: Yup.string()
@@ -71,7 +77,7 @@ const CreateCustomer = () => {
 
   const crumbs = [
     { label: "Home", path: "/" },
-    { label: "Customers", path: "/customers" },
+    { label: "Customers", path: "/view-customer" },
     { label: "Add Customer" },
   ];
 

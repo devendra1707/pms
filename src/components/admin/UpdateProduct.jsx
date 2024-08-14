@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { updateProduct } from "../../services/admin/Product";
+import {
+  getProductById,
+  updateProductDetails,
+} from "../../services/admin/Product";
 import * as Yup from "yup";
 import Breadcrumb from "../navbar/Breadcrumb";
 import Base from "../navbar/Base";
 import { toast } from "react-toastify";
-import { getProductById } from "../../services/admin/Product"; // Assuming you have a service to get product details by ID
 
 const UpdateProduct = () => {
   const navigate = useNavigate();
@@ -14,7 +16,6 @@ const UpdateProduct = () => {
   const [errors, setErrors] = useState({});
   const [product, setProduct] = useState({
     productName: "",
-    productQuantity: "",
     productPrice: "",
     productDiscount: "",
     description: "",
@@ -68,7 +69,16 @@ const UpdateProduct = () => {
 
     try {
       await validationSchema.validate(product, { abortEarly: false });
-      await updateProduct(id, product);
+
+      // Extract only the necessary fields
+      const productDetails = {
+        productName: product.productName,
+        productPrice: product.productPrice,
+        productDiscount: product.productDiscount,
+        description: product.description,
+      };
+
+      await updateProductDetails(id, productDetails);
       toast.success("Product Updated Successfully");
       navigate("/view-product");
     } catch (error) {
@@ -97,7 +107,7 @@ const UpdateProduct = () => {
 
   const crumbs = [
     { label: "Home", path: "/" },
-    { label: "Products", path: "/products" },
+    { label: "Products", path: "/view-product" },
     { label: "Update Product" },
   ];
 
@@ -133,7 +143,6 @@ const UpdateProduct = () => {
                   Product Quantity
                 </label>
                 <input
-                  onChange={(e) => fieldChange(e, "productQuantity")}
                   type="number"
                   className="form-control"
                   id="productQuantity"

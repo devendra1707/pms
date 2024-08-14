@@ -16,6 +16,12 @@ const AllCustomer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5); // Number of items per page
 
+  const pageTitle = "All Customer";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   useEffect(() => {
     fetchCustomers()
       .then((data) => {
