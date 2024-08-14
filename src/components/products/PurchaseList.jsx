@@ -87,7 +87,7 @@ const PurchaseList = () => {
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <h5 className="card-title text-center">Purchase List</h5>
+              <h5 className="card-title text-center">Purchase Product List</h5>
             </div>
             <div className="card-body">
               <table className="table">
