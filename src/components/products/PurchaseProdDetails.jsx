@@ -18,6 +18,12 @@ const PurchaseProdDetails = () => {
       });
   }, [id]);
 
+  const pageTitle = "Purchase Product Details";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   const handlePrint = () => {
     window.print();
   };

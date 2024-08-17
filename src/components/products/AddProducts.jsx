@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Base from "../navbar/Base";
 import { useNavigate, useParams } from "react-router-dom";
 import { addProductQut } from "../../services/admin/Product";
@@ -13,12 +13,19 @@ const AddProducts = () => {
     setQuantity(e.target.value);
   };
 
+  
+  const pageTitle = "Add Product";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   const handleAddQuantity = () => {
     if (quantity <= 0) {
       toast.error("Please enter a valid quantity.");
       return;
     }
-
+    
     addProductQut(id, quantity)
       .then((data) => {
         toast.success("Product quantity added successfully.");

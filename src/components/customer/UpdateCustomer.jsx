@@ -18,6 +18,12 @@ const UpdateCustomer = () => {
     address: "",
   });
 
+  const pageTitle = "Update Customer";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   const validationSchema = Yup.object().shape({
     cusName: Yup.string()
       .required("Name is required")

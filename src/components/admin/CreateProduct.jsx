@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addProduct } from "../../services/admin/Product";
 import * as Yup from "yup";
@@ -76,6 +76,12 @@ const CreateProduct = () => {
       }
     }
   };
+
+  const pageTitle = "Create Product";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   const handleReset = () => {
     setProduct({

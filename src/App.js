@@ -24,7 +24,7 @@ import UserProfile from "./components/admin/UserProfile.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/pms/">
       <ToastContainer position="bottom-center" theme="dark" />
 
       <Routes>
@@ -50,6 +50,8 @@ function App() {
         <Route path="/view-customer" element={<AllCustomer />} />
         <Route path="/update-customer/:id" element={<UpdateCustomer />} />
         <Route path="/customer-details/:id" element={<CustomerDetails />} />
+
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

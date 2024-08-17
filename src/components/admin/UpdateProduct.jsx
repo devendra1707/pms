@@ -21,6 +21,12 @@ const UpdateProduct = () => {
     description: "",
   });
 
+  const pageTitle = "Update Product";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   const validationSchema = Yup.object().shape({
     productName: Yup.string()
       .required("Product Name is required")

@@ -15,6 +15,12 @@ const UserProfile = () => {
       });
   }, []);
 
+  const pageTitle = "User Profile";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   return (
     <Base>
       <div className="container mt-4">

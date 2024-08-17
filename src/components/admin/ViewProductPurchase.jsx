@@ -23,6 +23,12 @@ const ViewProductPurchase = () => {
       });
   }, []);
 
+  const pageTitle = "View Purchase Product";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   // Get the current page's items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

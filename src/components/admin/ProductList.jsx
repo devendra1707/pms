@@ -14,6 +14,12 @@ const ProductList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5); // Number of items per page
 
+  const pageTitle = "Product List";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   useEffect(() => {
     fetchProduct()
       .then((data) => {

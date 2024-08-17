@@ -34,6 +34,12 @@ const PurchaseProducts = () => {
       .catch(() => setError("Failed to fetch product details"));
   }, [id]);
 
+  const pageTitle = "Purchase Product";
+
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+
   useEffect(() => {
     if (findBy === "email" && purchase.cusEmail) {
       fetchCustomerByEmailId(purchase.cusEmail)
