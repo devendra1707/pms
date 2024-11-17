@@ -109,7 +109,9 @@ const AllCustomer = () => {
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <h5 className="card-title text-center">View Customers</h5>
+              <i>
+                <h3 className="card-title text-center">View Customers</h3>
+              </i>
             </div>
             <div className="card-body">
               <table className="table">
@@ -157,7 +159,9 @@ const AllCustomer = () => {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -170,7 +174,9 @@ const AllCustomer = () => {
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
-                      className={`page-item ${currentPage === page ? "active" : ""}`}
+                      className={`page-item ${
+                        currentPage === page ? "active" : ""
+                      }`}
                     >
                       <button
                         className="page-link"
@@ -182,7 +188,9 @@ const AllCustomer = () => {
                   ))}
 
                   <li
-                    className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"

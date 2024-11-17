@@ -163,7 +163,9 @@ const PurchaseProducts = () => {
       <main className="content px-3 py-2">
         <div className="container-fluid mt-3">
           <div className="text-center">
-            <h5>Purchase Product</h5>
+            <i>
+              <h3>Purchase Product</h3>
+            </i>
           </div>
           <form
             onSubmit={handleSubmit}
@@ -236,9 +238,9 @@ const PurchaseProducts = () => {
             )}
             {product && (
               <div className="text-center mb-3">
-                <h4 className="text-primary">{product.productName}</h4>
+                <h4 className="text-primary"><i>Product Name :: {product.productName}</i></h4>
                 <h5 className="text-secondary">
-                  Total Cost: ₹  {totalCost.toFixed(2)}
+                  Total Cost: ₹ {totalCost.toFixed(2)}
                 </h5>
               </div>
             )}
@@ -335,9 +337,6 @@ const PurchaseProducts = () => {
     </Base>
   );
 };
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { useNavigate, useParams } from "react-router-dom";

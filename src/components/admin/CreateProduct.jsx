@@ -106,7 +106,9 @@ const CreateProduct = () => {
         <div className="container-fluid mt-3">
           <Breadcrumb crumbs={crumbs} />
           <div className="text-center">
-            <h5>Product Form</h5>
+            <i>
+              <h3>Product Form</h3>
+            </i>
           </div>
           <form action="" className="border border-secondary p-3 rounded">
             <div className="row">

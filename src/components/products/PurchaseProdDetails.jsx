@@ -35,59 +35,61 @@ const PurchaseProdDetails = () => {
           <>
             <div className="card">
               <div className="card-header text-center">
-                <h4>Purchase Details</h4>
+                <i>
+                  <h3>Purchase Details</h3>
+                </i>
               </div>
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6">
                     <p>
-                      <strong>Product ID:</strong> {purchaseProd.id}
+                      <strong>Product ID: </strong> {purchaseProd.id}
                     </p>
                     <p>
-                      <strong>Product Name:</strong> {purchaseProd.productName}
+                      <strong>Product Name: </strong> {purchaseProd.productName}
                     </p>
 
                     <p>
-                      <strong>Quantity Purchased:</strong>
+                      <strong>Quantity Purchased: </strong>
                       {purchaseProd.quantityPurchased}
                     </p>
                     <p>
-                      <strong>Total Amount:</strong> ₹{" "}
+                      <strong>Total Amount: </strong> ₹{" "}
                       {purchaseProd.totalAmount}
                     </p>
                   </div>
                   <div className="col-md-6">
                     <p>
-                      <strong>Customer Name:</strong> {purchaseProd.cusName}
+                      <strong>Customer Name: </strong> {purchaseProd.cusName}
                     </p>
                     <p>
-                      <strong>Email:</strong> {purchaseProd.cusEmail}
+                      <strong>Email: </strong> {purchaseProd.cusEmail}
                     </p>
                     <p>
-                      <strong>Mobile Number:</strong> {purchaseProd.mobNum}
+                      <strong>Mobile Number: </strong> {purchaseProd.mobNum}
                     </p>
                     <p>
-                      <strong>Address:</strong> {purchaseProd.address}
+                      <strong>Address: </strong> {purchaseProd.address}
                     </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
                     <p>
-                      <strong>Product Price:</strong> ₹{" "}
+                      <strong>Product Price: </strong> ₹{" "}
                       {purchaseProd.productPrice}
                     </p>
                     <p>
-                      <strong>Product Discount:</strong>{" "}
+                      <strong>Product Discount: </strong>{" "}
                       {purchaseProd.productDiscount}%
                     </p>
                   </div>
                   <div className="col-md-6">
                     <p>
-                      <strong>Description:</strong> {purchaseProd.description}
+                      <strong>Description: </strong> {purchaseProd.description}
                     </p>
                     <p>
-                      <strong>Purchase Date:</strong>{" "}
+                      <strong>Purchase Date: </strong>{" "}
                       {purchaseProd.purchaseDate}
                     </p>
                   </div>

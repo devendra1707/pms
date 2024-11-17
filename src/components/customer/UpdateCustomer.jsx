@@ -4,7 +4,10 @@ import Base from "../navbar/Base";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Breadcrumb from "../navbar/Breadcrumb";
-import { fetchCustomerById, updateCustomers } from "../../services/admin/Customer";
+import {
+  fetchCustomerById,
+  updateCustomers,
+} from "../../services/admin/Customer";
 
 const UpdateCustomer = () => {
   const { id } = useParams();
@@ -96,7 +99,9 @@ const UpdateCustomer = () => {
         <div className="container-fluid mt-3">
           <Breadcrumb crumbs={crumbs} />
           <div className="text-center">
-            <h5>Update Customer</h5>
+            <i>
+              <h3>Update Customer</h3>
+            </i>
           </div>
           <form action="" className="border border-secondary p-3 rounded">
             <div className="row">

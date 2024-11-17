@@ -75,11 +75,14 @@ const ViewProductPurchase = () => {
 
   return (
     <Base>
+      {/* {JSON.stringify(currentItems[1].productQuantity)} */}
       <main className="content px-3 py-2">
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <h5 className="card-title text-center">Products List</h5>
+              <i>
+                <h3 className="card-title text-center">Products List</h3>
+              </i>
             </div>
             <div className="card-body">
               <table className="table">
@@ -103,12 +106,22 @@ const ViewProductPurchase = () => {
                       <td>{details.productDiscount}</td>
                       <td>
                         <div className="dropdown">
-                          <button
+                          {/* <button
                             type="button"
                             className="btn btn-outline-primary"
                             onClick={() => purchaseProduct(details.prodId)}
                           >
                             PURCHASE
+                          </button> */}
+                          <button
+                            type="button"
+                            className="btn btn-outline-primary"
+                            onClick={() => purchaseProduct(details.prodId)}
+                            disabled={details.productQuantity <= 0}
+                          >
+                            {details.productQuantity > 0
+                              ? "BUY NOW"
+                              : "NOT AVAILABLE"}
                           </button>
                         </div>
                       </td>
@@ -119,7 +132,9 @@ const ViewProductPurchase = () => {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -132,7 +147,9 @@ const ViewProductPurchase = () => {
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
-                      className={`page-item ${currentPage === page ? "active" : ""}`}
+                      className={`page-item ${
+                        currentPage === page ? "active" : ""
+                      }`}
                     >
                       <button
                         className="page-link"
@@ -144,7 +161,9 @@ const ViewProductPurchase = () => {
                   ))}
 
                   <li
-                    className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"

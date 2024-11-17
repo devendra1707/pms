@@ -87,7 +87,9 @@ const CreateCustomer = () => {
         <div className="container-fluid mt-3">
           <Breadcrumb crumbs={crumbs} />
           <div className="text-center">
-            <h5>Customer Form</h5>
+            <i>
+              <h3>Customer Form</h3>
+            </i>
           </div>
           <form action="" className="border border-secondary p-3 rounded">
             <div className="row">

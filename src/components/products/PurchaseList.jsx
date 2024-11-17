@@ -29,7 +29,7 @@ const PurchaseList = () => {
           const dateB = parse(b.purchaseDate, dateFormat, new Date());
           return compareDesc(dateA, dateB);
         });
-        
+
         setPurchases(sortedPurchases);
       })
       .catch((error) => {
@@ -93,7 +93,11 @@ const PurchaseList = () => {
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <h5 className="card-title text-center">Purchase Product List</h5>
+              <i>
+                <h3 className="card-title text-center">
+                  Purchase Product List
+                </h3>
+              </i>
             </div>
             <div className="card-body">
               <table className="table">
@@ -133,7 +137,9 @@ const PurchaseList = () => {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -146,7 +152,9 @@ const PurchaseList = () => {
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
-                      className={`page-item ${currentPage === page ? "active" : ""}`}
+                      className={`page-item ${
+                        currentPage === page ? "active" : ""
+                      }`}
                     >
                       <button
                         className="page-link"
@@ -158,7 +166,9 @@ const PurchaseList = () => {
                   ))}
 
                   <li
-                    className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -178,7 +188,6 @@ const PurchaseList = () => {
 };
 
 export default PurchaseList;
-
 
 // import React, { useEffect, useState } from "react";
 // import Base from "../navbar/Base";
@@ -203,7 +212,7 @@ export default PurchaseList;
 //           const dateB = parse(b.purchaseDate, dateFormat, new Date());
 //           return compareDesc(dateA, dateB);
 //         });
-        
+
 //         setPurchases(sortedPurchases);
 //       })
 //       .catch((error) => {
@@ -267,4 +276,3 @@ export default PurchaseList;
 // };
 
 // export default PurchaseList;
-

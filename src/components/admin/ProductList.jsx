@@ -78,7 +78,7 @@ const ProductList = () => {
     navigate(`/update-product/${id}`);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id,product) => {
     deleteProductById(id)
       .then(() => {
         toast.success("Product deleted successfully.");
@@ -109,7 +109,9 @@ const ProductList = () => {
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <h5 className="card-title text-center">View Products</h5>
+              <i>
+                <h5 className="card-title text-center">View Products</h5>
+              </i>
             </div>
             <div className="card-body">
               <table className="table">

@@ -13,7 +13,6 @@ const AddProducts = () => {
     setQuantity(e.target.value);
   };
 
-  
   const pageTitle = "Add Product";
 
   useEffect(() => {
@@ -25,11 +24,11 @@ const AddProducts = () => {
       toast.error("Please enter a valid quantity.");
       return;
     }
-    
+
     addProductQut(id, quantity)
       .then((data) => {
         toast.success("Product quantity added successfully.");
-        navigate("/view-product"); 
+        navigate("/view-product");
       })
       .catch((error) => {
         toast.error("Failed to add product quantity.");
@@ -42,7 +41,9 @@ const AddProducts = () => {
       <div className="container mt-3">
         <div className="card border-0">
           <div className="card-header">
-            <h5 className="card-title text-center">Add Product Quantity</h5>
+            <i>
+              <h3 className="card-title text-center">Add Product Quantity</h3>
+            </i>
           </div>
           <div className="card-body">
             <div className="form-group">
@@ -56,11 +57,14 @@ const AddProducts = () => {
                 min="1"
               />
             </div>
-           <div className="text-center">
-           <button className="btn btn-secondary mt-3" onClick={handleAddQuantity}>
-              Add Quantity
-            </button>
-           </div>
+            <div className="text-center">
+              <button
+                className="btn btn-secondary mt-3"
+                onClick={handleAddQuantity}
+              >
+                Add Quantity
+              </button>
+            </div>
           </div>
         </div>
       </div>

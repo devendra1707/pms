@@ -123,7 +123,9 @@ const UpdateProduct = () => {
         <div className="container-fluid mt-3">
           <Breadcrumb crumbs={crumbs} />
           <div className="text-center">
-            <h5>Update Product</h5>
+            <i>
+              <h3>Update Product</h3>
+            </i>
           </div>
           <form action="" className="border border-secondary p-3 rounded">
             <div className="row">

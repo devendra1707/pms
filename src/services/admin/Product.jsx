@@ -69,10 +69,15 @@ export const getProductHistory = (prodId) => {
 // All Products List
 
 export const fetchProduct = () => {
-  return privateAxios.get(`product/all`).then((response) => {
+  return privateAxios.get(`product/active`).then((response) => {
     return response.data;
   });
 };
+// export const fetchProduct = () => {
+//   return privateAxios.get(`product/all`).then((response) => {
+//     return response.data;
+//   });
+// };
 
 // All Products Purchase List
 
@@ -146,8 +151,8 @@ export const getProductById = (prodId) => {
 
 // delete Products /delete/{prodId}
 
-export const deleteProductById = (prodId) => {
-  return privateAxios.delete(`product/delete/${prodId}`).then((res) => {
+export const deleteProductById = (prodId,product) => {
+  return privateAxios.put(`product/delete/${prodId}`).then((res) => {
     return res.data;
   });
 };
