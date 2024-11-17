@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Base from "../navbar/Base";
 import { useNavigate } from "react-router-dom";
+import { apiCallAgain } from "../../services/UserService";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -23,7 +24,24 @@ const Home = () => {
     navigate("/view-product");
   };
 
+  // call API on every 50 Sec
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiCallAgain();
+        console.log("Fetched data:", response);
+      } catch (err) {
+        console.error("Error during API call:", err);
+      }
+    };
+    const interval = setInterval(() => {
+      fetchData();
+    }, 50000);
 
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <Base>
@@ -47,7 +65,10 @@ const Home = () => {
                   Browse through the list of products, view details, and manage
                   your inventory.
                 </p>
-                <button className="btn btn-primary mt-auto" onClick={handleViewProducts}> 
+                <button
+                  className="btn btn-primary mt-auto"
+                  onClick={handleViewProducts}
+                >
                   Go to Products
                 </button>
               </div>
@@ -72,10 +93,12 @@ const Home = () => {
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">Purchase List</h5>
                 <p className="card-text">
-                  View the purchase list and track the sales of your
-                  products.
+                  View the purchase list and track the sales of your products.
                 </p>
-                <button className="btn btn-warning mt-auto" onClick={handlePurchaseList}>
+                <button
+                  className="btn btn-warning mt-auto"
+                  onClick={handlePurchaseList}
+                >
                   Purchase List
                 </button>
               </div>

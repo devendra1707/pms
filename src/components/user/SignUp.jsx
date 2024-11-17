@@ -1,9 +1,9 @@
 import * as React from "react";
 import Base from "../navbar/Base";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { signUpUser } from "../../services/UserService";
+import { apiCallAgain, signUpUser } from "../../services/UserService";
 
 const Signup = () => {
   const [errors, setErrors] = useState({});
@@ -131,6 +131,25 @@ const Signup = () => {
     setErrors({});
     setValidForm(false);
   };
+
+  // For Call API on Every 50 sec
+ useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiCallAgain();
+        console.log("Fetched data:", response);
+      } catch (err) {
+        console.error("Error during API call:", err);
+      }
+    };
+    const interval = setInterval(() => {
+      fetchData();
+    }, 50000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <Base>

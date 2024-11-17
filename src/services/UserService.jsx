@@ -17,3 +17,9 @@ export const getCurrentUser = () => {
     return response.data;
   });
 };
+
+export const apiCallAgain = () => {
+  return myAxios.get("api/").then((res) => res.data);
+};
+
+

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Base from "../navbar/Base";
 import { doLogin } from "../../auth";
-import { loginUser } from "../../services/UserService";
+import { apiCallAgain, loginUser } from "../../services/UserService";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 // import userContext from "../../context/UserContext";
@@ -90,6 +90,26 @@ const Login = () => {
     });
     setErrors({});
   };
+
+
+  // For Call API on Every 50 sec
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiCallAgain();
+        console.log("Fetched data:", response);
+      } catch (err) {
+        console.error("Error during API call:", err);
+      }
+    };
+    const interval = setInterval(() => {
+      fetchData();
+    }, 50000);
+
+    return () => {
+      clearInterval(interval); 
+    };
+  }, []);
 
   return (
     <Base>
