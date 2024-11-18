@@ -43,50 +43,63 @@ const PurchaseProdDetails = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <p>
-                      <strong>Product ID: </strong> {purchaseProd.id}
+                      <strong>Customer Name: </strong> {purchaseProd.cusName}
                     </p>
                     <p>
-                      <strong>Product Name: </strong> {purchaseProd.productName}
+                      <strong>Mobile Number: </strong> {purchaseProd.mobNum}
+                      {/* <strong>Product Name: </strong> {purchaseProd.productName} */}
                     </p>
 
+                    <p>
+                      <strong>Product Name: </strong> {purchaseProd.productName}
+                      {/* <strong>Quantity Purchased: </strong>
+                      {purchaseProd.quantityPurchased} */}
+                    </p>
+                    <p>
+                      <strong>Product Discount: </strong>{" "}
+                      {purchaseProd.productDiscount}%
+                      {/* <strong>Total Amount: </strong> ₹{" "}
+                      {purchaseProd.totalAmount} */}
+                    </p>
+                  </div>
+                  <div className="col-md-6">
+                    <p>
+                      <strong>Email: </strong> {purchaseProd.cusEmail}
+                    </p>
+                    <p>
+                      <strong>Address: </strong> {purchaseProd.address}
+                    </p>
                     <p>
                       <strong>Quantity Purchased: </strong>
                       {purchaseProd.quantityPurchased}
                     </p>
                     <p>
-                      <strong>Total Amount: </strong> ₹{" "}
-                      {purchaseProd.totalAmount}
-                    </p>
-                  </div>
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Customer Name: </strong> {purchaseProd.cusName}
-                    </p>
-                    <p>
-                      <strong>Email: </strong> {purchaseProd.cusEmail}
-                    </p>
-                    <p>
-                      <strong>Mobile Number: </strong> {purchaseProd.mobNum}
-                    </p>
-                    <p>
-                      <strong>Address: </strong> {purchaseProd.address}
+                      <strong>Product Price: </strong> ₹{" "}
+                      {purchaseProd.productPrice}
+                      {/* <strong>Paybale Amount: </strong>  ₹{" "}
+                      {purchaseProd.payableAmount} */}
                     </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
                     <p>
-                      <strong>Product Price: </strong> ₹{" "}
-                      {purchaseProd.productPrice}
+                      <strong>Total Amount: </strong> ₹{" "}
+                      {purchaseProd.totalAmount}
+                      {/* <strong>Product Price: </strong> ₹{" "}
+                      {purchaseProd.productPrice} */}
                     </p>
                     <p>
-                      <strong>Product Discount: </strong>{" "}
-                      {purchaseProd.productDiscount}%
+                      <strong>Description: </strong> {purchaseProd.description}
+                      {/* <strong>Product Discount: </strong>{" "}
+                      {purchaseProd.productDiscount}% */}
                     </p>
                   </div>
                   <div className="col-md-6">
                     <p>
-                      <strong>Description: </strong> {purchaseProd.description}
+                      <strong>Paybale Amount: </strong> ₹{" "}
+                      {purchaseProd.payableAmount}
+                      {/* <strong>Description: </strong> {purchaseProd.description} */}
                     </p>
                     <p>
                       <strong>Purchase Date: </strong>{" "}

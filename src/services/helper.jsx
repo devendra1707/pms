@@ -3,8 +3,8 @@ import axios from "axios";
 
 // Function to get the theme from local storage
 
-// export const BASE_URL = "http://localhost:8081/";
-export const BASE_URL = "https://pmspro.onrender.com/";
+export const BASE_URL = "http://localhost:8081/";
+// export const BASE_URL = "https://pmspro.onrender.com/";
 
 export const myAxios = axios.create({
   baseURL: BASE_URL,
