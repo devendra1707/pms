@@ -41,76 +41,67 @@ const PurchaseList = () => {
 
   const totalPages = Math.ceil(purchases.length / itemsPerPage);
 
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
-
-  const paginationRange = (pageNumbers, currentPage) => {
+  const paginationRange = (currentPage, totalPages) => {
     const delta = 2;
-    const left = Math.max(currentPage - delta, 1);
-    const right = Math.min(currentPage + delta, totalPages);
-    let pages = [];
-
-    if (left > 1) {
-      pages.push(1);
-      if (left > 2) pages.push("...");
+    const range = [];
+    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+      range.push(i);
     }
-
-    for (let i = left; i <= right; i++) pages.push(i);
-
-    if (right < totalPages) {
-      if (right < totalPages - 1) pages.push("...");
-      pages.push(totalPages);
-    }
-    return pages;
+    if (currentPage - delta > 2) range.unshift("...");
+    if (currentPage + delta < totalPages - 1) range.push("...");
+    range.unshift(1);
+    if (totalPages > 1) range.push(totalPages);
+    return range;
   };
 
-  const visiblePages = paginationRange(pageNumbers, currentPage);
+  const visiblePages = paginationRange(currentPage, totalPages);
 
   const handleDetails = (id) => navigate(`/purchase-details/${id}`);
 
   return (
     <Base>
-      <main className="content px-3 py-2">
+      <main className="content px-4 py-3">
         <div className="container-fluid mt-3">
-          <div className="card border-0 shadow-sm">
-            <div className="card-header bg-primary text-white text-center">
+          <div className="card shadow-sm border-0">
+            <div className="card-header bg-gradient  text-center">
               <h3 className="card-title">Purchase Product List</h3>
             </div>
             <div className="card-body">
               <div className="table-responsive">
-                <table className="table table-bordered table-striped">
-                  <thead className="bg-light">
+                <table className="table table-hover table-striped align-middle">
+                  <thead className="table-dark">
                     <tr>
-                      <th>Id</th>
+                      <th>#</th>
                       <th>Customer Name</th>
-                      <th>Product Quantity</th>
-                      <th>Product Price</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
                       <th>Purchase Date</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {currentItems.length > 0 ? (
-                      currentItems.map((details) => (
+                      currentItems.map((details, index) => (
                         <tr key={details.id}>
-                          <td>{details.id}</td>
+                          <td>{indexOfFirstItem + index + 1}</td>
                           <td>{details.cusName}</td>
                           <td>{details.quantityPurchased}</td>
-                          <td>{details.productPrice}</td>
+                          <td>${details.productPrice.toFixed(2)}</td>
                           <td>{details.purchaseDate}</td>
                           <td>
                             <button
-                              className="btn btn-outline-primary btn-sm"
+                              className="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
                               onClick={() => handleDetails(details.id)}
                             >
-                              <BsFileEarmarkPdf /> VIEW
+                              <BsFileEarmarkPdf />
+                              View
                             </button>
                           </td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="6" className="text-center">
+                        <td colSpan="6" className="text-center text-muted">
                           No purchases found.
                         </td>
                       </tr>
@@ -118,45 +109,29 @@ const PurchaseList = () => {
                   </tbody>
                 </table>
               </div>
-              <nav>
+              <nav className="mt-4">
                 <ul className="pagination justify-content-center">
-                  <li
-                    className={`page-item ${
-                      currentPage === 1 ? "disabled" : ""
-                    }`}
-                  >
-                    <button
-                      className="page-link"
-                      onClick={() => handlePageChange(currentPage - 1)}
-                    >
-                      Previous
+                  <li className={`page-item ${currentPage === 1 && "disabled"}`}>
+                    <button className="page-link" onClick={() => handlePageChange(currentPage - 1)}>
+                      &laquo; Prev
                     </button>
                   </li>
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
-                      className={`page-item ${
-                        currentPage === page ? "active" : ""
-                      }`}
+                      className={`page-item ${currentPage === page && "active"}`}
                     >
                       <button
                         className="page-link"
-                        onClick={() => page !== "..." && handlePageChange(page)}
+                        onClick={() => typeof page === "number" && handlePageChange(page)}
                       >
                         {page}
                       </button>
                     </li>
                   ))}
-                  <li
-                    className={`page-item ${
-                      currentPage === totalPages ? "disabled" : ""
-                    }`}
-                  >
-                    <button
-                      className="page-link"
-                      onClick={() => handlePageChange(currentPage + 1)}
-                    >
-                      Next
+                  <li className={`page-item ${currentPage === totalPages && "disabled"}`}>
+                    <button className="page-link" onClick={() => handlePageChange(currentPage + 1)}>
+                      Next &raquo;
                     </button>
                   </li>
                 </ul>
@@ -170,6 +145,7 @@ const PurchaseList = () => {
 };
 
 export default PurchaseList;
+
 
 
 // import React, { useEffect, useState } from "react";

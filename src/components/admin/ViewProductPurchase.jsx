@@ -80,8 +80,8 @@ const ViewProductPurchase = () => {
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
-                    <table className="table table-striped">
-                      <thead>
+                    <table className="table table-striped table-hover">
+                      <thead className="table-dark">
                         <tr>
                           <th scope="col">Id</th>
                           <th scope="col">Product Name</th>
