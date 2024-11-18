@@ -20,48 +20,34 @@ const PurchaseList = () => {
   useEffect(() => {
     fetchProductPurchaseList()
       .then((data) => {
-        // Define the date format
         const dateFormat = "dd/MM/yyyy hh:mm:ss a";
-
-        // Sort purchases by purchaseDate in descending order
         const sortedPurchases = data.sort((a, b) => {
           const dateA = parse(a.purchaseDate, dateFormat, new Date());
           const dateB = parse(b.purchaseDate, dateFormat, new Date());
           return compareDesc(dateA, dateB);
         });
-
         setPurchases(sortedPurchases);
       })
       .catch((error) => {
-        console.log("Failed to fetch Product Purchase details:", error);
+        console.error("Failed to fetch Product Purchase details:", error);
       });
   }, []);
 
-  // Get the current page's items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = purchases.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Calculate total pages
   const totalPages = Math.ceil(purchases.length / itemsPerPage);
 
-  // Generate pagination range
   const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
 
-  // Handle pagination range to show
   const paginationRange = (pageNumbers, currentPage) => {
-    const delta = 2; // How many pages to show on each side of the current page
+    const delta = 2;
     const left = Math.max(currentPage - delta, 1);
     const right = Math.min(currentPage + delta, totalPages);
-
     let pages = [];
 
     if (left > 1) {
@@ -69,71 +55,69 @@ const PurchaseList = () => {
       if (left > 2) pages.push("...");
     }
 
-    for (let i = left; i <= right; i++) {
-      pages.push(i);
-    }
+    for (let i = left; i <= right; i++) pages.push(i);
 
     if (right < totalPages) {
       if (right < totalPages - 1) pages.push("...");
       pages.push(totalPages);
     }
-
     return pages;
   };
 
   const visiblePages = paginationRange(pageNumbers, currentPage);
 
-  const handleDetails = (id) => {
-    navigate(`/purchase-details/${id}`);
-  };
+  const handleDetails = (id) => navigate(`/purchase-details/${id}`);
 
   return (
     <Base>
       <main className="content px-3 py-2">
         <div className="container-fluid mt-3">
-          <div className="card border-0">
-            <div className="card-header">
-              <i>
-                <h3 className="card-title text-center">
-                  Purchase Product List
-                </h3>
-              </i>
+          <div className="card border-0 shadow-sm">
+            <div className="card-header bg-primary text-white text-center">
+              <h3 className="card-title">Purchase Product List</h3>
             </div>
             <div className="card-body">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Product Quantity</th>
-                    <th scope="col">Product Price</th>
-                    <th scope="col">Purchase Date</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((details) => (
-                    <tr key={details.id}>
-                      <th scope="row">{details.id}</th>
-                      <td>{details.cusName}</td>
-                      <td>{details.quantityPurchased}</td>
-                      <td>{details.productPrice}</td>
-                      <td>{details.purchaseDate}</td>
-                      <td>
-                        <div className="action-buttons">
-                          <button
-                            className="btn btn-secondary btn-sm mx-2"
-                            onClick={() => handleDetails(details.id)}
-                          >
-                            <BsFileEarmarkPdf /> VIEW
-                          </button>
-                        </div>
-                      </td>
+              <div className="table-responsive">
+                <table className="table table-bordered table-striped">
+                  <thead className="bg-light">
+                    <tr>
+                      <th>Id</th>
+                      <th>Customer Name</th>
+                      <th>Product Quantity</th>
+                      <th>Product Price</th>
+                      <th>Purchase Date</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-              {/* Pagination controls */}
+                  </thead>
+                  <tbody>
+                    {currentItems.length > 0 ? (
+                      currentItems.map((details) => (
+                        <tr key={details.id}>
+                          <td>{details.id}</td>
+                          <td>{details.cusName}</td>
+                          <td>{details.quantityPurchased}</td>
+                          <td>{details.productPrice}</td>
+                          <td>{details.purchaseDate}</td>
+                          <td>
+                            <button
+                              className="btn btn-outline-primary btn-sm"
+                              onClick={() => handleDetails(details.id)}
+                            >
+                              <BsFileEarmarkPdf /> VIEW
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="6" className="text-center">
+                          No purchases found.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
@@ -148,7 +132,6 @@ const PurchaseList = () => {
                       Previous
                     </button>
                   </li>
-
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
@@ -164,7 +147,6 @@ const PurchaseList = () => {
                       </button>
                     </li>
                   ))}
-
                   <li
                     className={`page-item ${
                       currentPage === totalPages ? "disabled" : ""
@@ -188,6 +170,7 @@ const PurchaseList = () => {
 };
 
 export default PurchaseList;
+
 
 // import React, { useEffect, useState } from "react";
 // import Base from "../navbar/Base";

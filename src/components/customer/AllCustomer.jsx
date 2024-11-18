@@ -14,7 +14,7 @@ const AllCustomer = () => {
   const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); // Number of items per page
+  const [itemsPerPage] = useState(5);
 
   const pageTitle = "All Customer";
 
@@ -25,7 +25,6 @@ const AllCustomer = () => {
   useEffect(() => {
     fetchCustomers()
       .then((data) => {
-        // Sort customers by name in ascending order
         const sortedCustomers = data.sort((a, b) =>
           a.cusName.localeCompare(b.cusName)
         );
@@ -36,22 +35,18 @@ const AllCustomer = () => {
       });
   }, []);
 
-  // Get the current page's items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentCustomers = customers.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(customers.length / itemsPerPage);
 
-  // Generate pagination range
   const paginationRange = (currentPage, totalPages) => {
-    const delta = 2; // Number of pages to show around the current page
+    const delta = 2;
     const left = Math.max(currentPage - delta, 1);
     const right = Math.min(currentPage + delta, totalPages);
 
@@ -86,7 +81,6 @@ const AllCustomer = () => {
         toast.success("Customer deleted successfully.");
         fetchCustomers()
           .then((data) => {
-            // Resort and update customers
             const sortedCustomers = data.sort((a, b) =>
               a.cusName.localeCompare(b.cusName)
             );
@@ -109,9 +103,7 @@ const AllCustomer = () => {
         <div className="container-fluid mt-3">
           <div className="card border-0">
             <div className="card-header">
-              <i>
-                <h3 className="card-title text-center">View Customers</h3>
-              </i>
+              <h3 className="card-title text-center">View Customers</h3>
             </div>
             <div className="card-body">
               <table className="table">
@@ -128,7 +120,7 @@ const AllCustomer = () => {
                 <tbody>
                   {currentCustomers.map((details) => (
                     <tr key={details.cusId}>
-                      <th scope="row">{details.cusId}</th>
+                      <td>{details.cusId}</td>
                       <td>{details.cusName}</td>
                       <td>{details.cusEmail}</td>
                       <td>{details.mobNum}</td>
@@ -159,9 +151,7 @@ const AllCustomer = () => {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${
-                      currentPage === 1 ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
                   >
                     <button
                       className="page-link"
@@ -174,9 +164,7 @@ const AllCustomer = () => {
                   {visiblePages.map((page, index) => (
                     <li
                       key={index}
-                      className={`page-item ${
-                        currentPage === page ? "active" : ""
-                      }`}
+                      className={`page-item ${currentPage === page ? "active" : ""}`}
                     >
                       <button
                         className="page-link"
@@ -188,9 +176,7 @@ const AllCustomer = () => {
                   ))}
 
                   <li
-                    className={`page-item ${
-                      currentPage === totalPages ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
                   >
                     <button
                       className="page-link"

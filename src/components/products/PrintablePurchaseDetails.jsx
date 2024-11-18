@@ -4,42 +4,13 @@ import "./Printable.css";
 const PrintablePurchaseDetails = ({ purchaseProd }) => {
   return (
     <div className="printable">
-      <h2 style={{ textAlign: "center" }}>Purchase Receipt</h2>
+      <h2 className="receipt-title">Purchase Receipt</h2>
       <div className="purchase-details">
         <div className="detail-row">
           <p>
             <i>
-              <strong>Product ID: </strong>
+              <strong>Customer Name: </strong>
             </i>
-            {purchaseProd.id}
-          </p>
-          <p>
-            <i>
-              <strong>Product Name: </strong>
-            </i>{" "}
-            {purchaseProd.productName}
-          </p>
-        </div>
-        <div className="detail-row">
-          <p>
-            <i>
-              {" "}
-              <strong>Quantity Purchased:</strong>
-            </i>
-            {purchaseProd.quantityPurchased}
-          </p>
-          <p>
-            <i>
-              <strong>Total Amount:</strong>
-            </i>{" "}
-            ₹ {purchaseProd.totalAmount}
-          </p>
-        </div>
-        <div className="detail-row">
-          <p>
-            <i>
-              <strong>Customer Name:</strong>
-            </i>{" "}
             {purchaseProd.cusName}
           </p>
           <p>
@@ -66,15 +37,15 @@ const PrintablePurchaseDetails = ({ purchaseProd }) => {
         <div className="detail-row">
           <p>
             <i>
-              <strong>Purchase Date:</strong>
+              <strong>Product Name:</strong>
             </i>{" "}
-            {purchaseProd.purchaseDate}
+            {purchaseProd.productName}
           </p>
           <p>
             <i>
-              <strong>Product Price:</strong>
+              <strong>Quantity Purchased:</strong>
             </i>{" "}
-            ₹ {purchaseProd.productPrice}
+            {purchaseProd.quantityPurchased}
           </p>
         </div>
         <div className="detail-row">
@@ -86,9 +57,37 @@ const PrintablePurchaseDetails = ({ purchaseProd }) => {
           </p>
           <p>
             <i>
+              <strong>Product Price:</strong>
+            </i>{" "}
+            ₹ {purchaseProd.productPrice}
+          </p>
+        </div>
+        <div className="detail-row">
+          <p>
+            <i>
+              <strong>Total Amount:</strong>
+            </i>{" "}
+            ₹ {purchaseProd.totalAmount}
+          </p>
+          <p>
+            <i>
+              <strong>Payable Amount:</strong>
+            </i>{" "}
+            ₹ {purchaseProd.payableAmount}
+          </p>
+        </div>
+        <div className="detail-row">
+          <p>
+            <i>
               <strong>Description:</strong>
             </i>{" "}
             {purchaseProd.description}
+          </p>
+          <p>
+            <i>
+              <strong>Purchase Date:</strong>
+            </i>{" "}
+            {purchaseProd.purchaseDate}
           </p>
         </div>
       </div>

@@ -1,23 +1,9 @@
-.table th {
-    text-align: center;
-  }
-  
-  .table td {
-    text-align: center;
-  }
-  
-  .action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .btn svg {
-    margin-right: 5px;
-  }
-  
-  .table td,
-  .table th {
-    padding: 10px;
-  }
-  
+.card-title {
+  font-weight: bold;
+}
+.table {
+  margin-bottom: 1rem;
+}
+.action-buttons button {
+  min-width: 36px;
+}
